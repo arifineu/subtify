@@ -1,13 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Search Video Caption by Arifin Izzah</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+<section class="hero">
+  <div class="jumbotron jumbotron-fluid jumbotron-hero mb-0 pt-0">
+    <div class="container">
+      <nav class="navbar mb-5">
+        <a class="navbar-brand" href="#">Subtify</a>
+        <a class="navbar-nav py-1" href="">About</a>
+      </nav>
+      <div class="hero-content row justify-content-center text-center">
+        <div class="col-md-10 col-lg-6">
+          <h1 class="display-5">Finding Words Getting Easier</h1>
+          <p class="subtitle my-4">
+            Increasing productivity can be through anything. One of them is finding
+            words in YouTube caption quickly. Then Subtify is the solution
+          </p>
+          <a class="btn btn-lg hero-btn" href="" role="button">Find Words</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!--  <div id="app">-->
+<!--    <div class="mb-5">-->
+<!--      <input class="url" type="text" v-model="url" />-->
+<!--    </div>-->
+
+<!--    <div class="mb-5">-->
+<!--      <input class="kataKunci" type="text" v-model="kataKunci" />-->
+<!--      <button class="bersihkan" @click="bersihkan">Bersihkan</button>-->
+<!--    </div>-->
+
+<!--    <div class="mb-5">-->
+<!--      <button class="pertama" @click="navigasi('first')" :disabled="!paginasi['first']">-->
+<!--        First-->
+<!--      </button>-->
+<!--      <button class="sebelumnya" @click="navigasi('prev')" :disabled="!paginasi['prev']">-->
+<!--        Prev-->
+<!--      </button>-->
+<!--      <button class="selanjutnya" @click="navigasi('next')" :disabled="!paginasi['next']">-->
+<!--        Next-->
+<!--      </button>-->
+<!--      <button class="terakhir" @click="navigasi('last')" :disabled="!paginasi['last']">-->
+<!--        Last-->
+<!--      </button>-->
+<!--    </div>-->
+
+<!--    <div class="total mb-5">Total Hasil: {{ paginasi.total }}</div>-->
+<!--    <div class="halaman mb-5">Halaman ke: {{ paginasi.page }}</div>-->
+
+<!--    <ul class="daftar">-->
+<!--      <li v-for="(hasil, i) in daftarHasil" :key="i" class="mb-3">-->
+<!--        <span v-html="hasil.text"></span>-->
+<!--        <a :href="`${url}&t=${hasil.start}s`" target="_blank">Youtube</a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="assets/js/pdebounce.js"></script>
+  <script>
+      new Vue({
+          el: '#app',
+          data: {
+              url: 'https://www.youtube.com/watch?v=klnvttPfOUM',
+              kataKunci: '',
+              daftarHasil: [],
+              paginasi: {
+                  first: null,
+                  last: null,
+                  prev: null,
+                  next: null,
+                  total: 0,
+                  page: null
+              }
+          },
+          watch: {
+              kataKunci: pDebounce(async function tanganiKataKunci(kataKunci) {
+                  if (kataKunci && kataKunci.length >= 3) {
+                      await this.cari(kataKunci, this.url)
+                  } else {
+                      this.bersihkanHasilDanPaginasi()
+                  }
+              }, 250)
+          },
+          methods: {
+              async cari(kataKunci, url, paginasi) {
+                  try {
+                      const respon = await fetch(
+                          paginasi
+                              ? paginasi
+                              : `https://cari-teks-video-api.vercel.app/api/search?q=${kataKunci}&url=${encodeURIComponent(
+                              url
+                              )}`
+                      ).then(_ => (_.ok ? _.json() : []))
+
+                      this.daftarHasil = respon.data
+                      this.paginasi.first = respon.first
+                      this.paginasi.last = respon.last
+                      this.paginasi.prev = respon.prev
+                      this.paginasi.next = respon.next
+                      this.paginasi.total = respon.total
+                      this.paginasi.page = respon.page
+                  } catch (error) {}
+              },
+              async navigasi(type) {
+                  if (!this.paginasi[type]) {
+                      return
+                  }
+                  await this.cari(this.kataKunci, this.url, this.paginasi[type])
+              },
+              bersihkan() {
+                  this.kataKunci = ''
+                  this.bersihkanHasilDanPaginasi()
+              },
+              bersihkanHasilDanPaginasi() {
+                  this.daftarHasil = []
+                  this.paginasi = {
+                      first: null,
+                      last: null,
+                      prev: null,
+                      next: null,
+                      total: 0,
+                      page: null
+                  }
+              }
+          }
+      })
+  </script>
 </body>
 </html>
