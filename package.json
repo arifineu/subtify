@@ -1,0 +1,31 @@
+{
+  "name": "vue-search-video-caption",
+  "version": "1.0.0",
+  "description": "Search caption from Youtube video with VueJS and Bootstrap",
+  "main": "index.html",
+  "dependencies": {
+    "sass": "^1.26.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "sass --watch src/scss/main.scss assets/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arifinizzah/vue-search-video-caption.git"
+  },
+  "keywords": [
+    "youtube",
+    "video",
+    "caption",
+    "vuejs",
+    "bootstrap"
+  ],
+  "author": "Arifin Izzah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arifinizzah/vue-search-video-caption/issues"
+  },
+  "homepage": "https://github.com/arifinizzah/vue-search-video-caption#readme"
+}

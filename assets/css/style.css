@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+/* */
+/* Generated Colors from mixin */
+.text--white {
+  color: #ffffff;
+}
+.text--magnolia {
+  color: #F8F3FF;
+}
+.text--blue-chalk {
+  color: #F0E6FF;
+}
+.text--blue-chalk-dark {
+  color: #F0E6FF;
+}
+.text--fog {
+  color: #DAC1FF;
+}
+.text--mauve {
+  color: #D2B4FF;
+}
+.text--mauve-dark {
+  color: #c49cfc;
+}
+.text--paua {
+  color: #2d0367;
+}
+.text--black {
+  color: #000000;
+}
+
+/* */
+/* Custom style begin */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.navbar {
+  height: 75px;
+}
+
+.navbar-brand {
+  font-family: "Kalam", cursive;
+  color: #ffffff;
+  font-size: 2.2rem;
+  padding: 0;
+}
+.navbar-brand:hover {
+  color: #DAC1FF;
+}
+
+.navbar-nav {
+  font-family: "Quicksand", sans-serif;
+  color: #ffffff;
+  letter-spacing: 0.7px;
+}
+.navbar-nav:hover {
+  text-decoration: none;
+  color: #DAC1FF;
+}
+.navbar-nav.is-active {
+  color: #ffffff;
+  font-weight: 600;
+  border-bottom: 2px solid #ffffff;
+}
+
+.jumbotron-hero {
+  position: relative;
+  background: url("/assets/img/hero-bg-min.jpg") no-repeat bottom center/cover;
+}
+.jumbotron-hero:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+}
+.jumbotron-hero .hero-content {
+  padding: 75px 0;
+}
+.jumbotron-hero h1 {
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+}
+.jumbotron-hero .subtitle {
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Custom button */
+.hero-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: transparent;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2em;
+  border: 2px solid #ffffff;
+  border-radius: 0;
+  transition: 0.25s;
+}
+.hero-btn:hover, .hero-btn:focus {
+  color: #2D0367;
+  box-shadow: inset 0 -3em 0 0 #DAC1FF;
+  border: 2px solid #DAC1FF;
+}
+
+.svg-divider {
+  background-color: #000400;
+}
+
+.section-2 {
+  background-color: #F0E6FF;
+}
+
+/*# sourceMappingURL=style.css.map */
