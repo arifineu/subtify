@@ -1,8 +1,38 @@
-// Base Colors
+// Base Colors for Variables
 $white: #ffffff;
-$athens-gray: #F6F7F9;
-$botticelli: #D3DDE9;
-$polo-blue: #79A0C9;
-$steel-blue: #4676B4;
-$bunting: #172449;
+$magnolia: #F8F3FF;
+$blue-chalk: #F0E6FF;
+$blue-chalk-dark: #F0E6FF;
+$fog: #DAC1FF;
+$mauve: #D2B4FF;
+$mauve-dark: #C49CFC;
+$paua: #2D0367;
 $black: #000000;
+
+// Colors for Sass maps
+$colors: (
+  white: #ffffff,
+  magnolia: #F8F3FF,
+  blue-chalk: #F0E6FF,
+  blue-chalk-dark: #F0E6FF,
+  fog: #DAC1FF,
+  mauve: #D2B4FF,
+  mauve-dark: #c49cfc,
+  paua: #2d0367,
+  black: #000000
+);
+
+// Color Mixin
+@mixin color-modifiers($attribute: 'color', $prefix: '-') {
+  @each $name, $hex in $colors {
+    &#{$prefix}#{$name} {
+      #{$attribute}: $hex;
+    }
+  }
+}
+
+/* */
+/* Generated Colors from mixin */
+.text {
+  @include color-modifiers($prefix: '--');;
+}
