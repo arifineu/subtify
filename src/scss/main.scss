@@ -4,6 +4,11 @@
 
 /* */
 /* Custom style begin */
+
+body{
+  font-family: $roboto;
+}
+
 .navbar{
   height: 75px;
 }
@@ -14,7 +19,7 @@
   font-size: 2.2rem;
   padding: 0;
   &:hover{
-    color: $botticelli;
+    color: $fog;
   }
 }
 
@@ -24,7 +29,7 @@
   letter-spacing: 0.7px;
   &:hover{
     text-decoration: none;
-    color: $botticelli;
+    color: $fog;
   }
   &.is-active{
     color: $white;
@@ -35,7 +40,7 @@
 
 .jumbotron-hero{
   position: relative;
-  background: url("/assets/img/hero-bg.jpg") no-repeat bottom center / cover;
+  background: url("/assets/img/hero-bg-min.jpg") no-repeat bottom center / cover;
   &:before{
     position: absolute;
     content: '';
@@ -43,7 +48,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, .5);
+    max-height: 100vh;
+    background: rgba(0, 0, 0, .6);
   }
   .hero-content{
     padding: 75px 0;
@@ -71,8 +77,16 @@
   transition: 0.25s;
   &:hover,
   &:focus{
-    color: $white;
-    box-shadow: inset 0 -3em 0 0 $steel-blue;
-    border: 2px solid $steel-blue;
+    color: $paua;
+    box-shadow: inset 0 -3em 0 0 $fog;
+    border: 2px solid $fog;
   }
+}
+
+.svg-divider{
+  background-color: #000400;
+}
+
+.section-2{
+  background-color: $blue-chalk;
 }
