@@ -3,31 +3,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 /* */
 /* Generated Colors from mixin */
-.text--white {
+.text--white, .bg-color--white {
   color: #ffffff;
 }
-.text--magnolia {
+.text--magnolia, .bg-color--magnolia {
   color: #F8F3FF;
 }
-.text--blue-chalk {
+.text--blue-chalk, .bg-color--blue-chalk {
+  color: #e8d8ff;
+}
+.text--blue-chalk-dark, .bg-color--blue-chalk-dark {
   color: #F0E6FF;
 }
-.text--blue-chalk-dark {
-  color: #F0E6FF;
-}
-.text--fog {
+.text--fog, .bg-color--fog {
   color: #DAC1FF;
 }
-.text--mauve {
+.text--mauve, .bg-color--mauve {
   color: #D2B4FF;
 }
-.text--mauve-dark {
+.text--mauve-dark, .bg-color--mauve-dark {
   color: #c49cfc;
 }
-.text--paua {
+.text--paua, .bg-color--paua {
   color: #2d0367;
 }
-.text--black {
+.text--black, .bg-color--black {
   color: #000000;
 }
 
@@ -116,6 +116,17 @@ body {
 
 .section-2 {
   background-color: #F0E6FF;
+}
+
+.form-control {
+  border-color: #DAC1FF;
+}
+
+.embed-responsive-item.video-preview {
+  background-color: #e8d8ff;
+}
+.embed-responsive-item.video-preview h3 {
+  color: #C49CFC;
 }
 
 /*# sourceMappingURL=style.css.map */
