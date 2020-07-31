@@ -2,7 +2,7 @@
 $white: #ffffff;
 $magnolia: #F8F3FF;
 $blue-chalk: #F0E6FF;
-$blue-chalk-dark: #F0E6FF;
+$blue-chalk-dark: #e8d8ff;
 $fog: #DAC1FF;
 $mauve: #D2B4FF;
 $mauve-dark: #C49CFC;
@@ -13,7 +13,7 @@ $black: #000000;
 $colors: (
   white: #ffffff,
   magnolia: #F8F3FF,
-  blue-chalk: #F0E6FF,
+  blue-chalk: #e8d8ff,
   blue-chalk-dark: #F0E6FF,
   fog: #DAC1FF,
   mauve: #D2B4FF,
@@ -33,6 +33,6 @@ $colors: (
 
 /* */
 /* Generated Colors from mixin */
-.text {
+.text, .bg-color {
   @include color-modifiers($prefix: '--');;
 }
