@@ -90,3 +90,14 @@ body{
 .section-2{
   background-color: $blue-chalk;
 }
+
+.form-control{
+  border-color: $fog;
+}
+
+.embed-responsive-item.video-preview{
+  background-color: $blue-chalk-dark;
+  h3{
+    color: $mauve-dark;
+  }
+}
