@@ -5,8 +5,23 @@
 /* */
 /* Custom style begin */
 
+//* {
+//  background: #000 !important;
+//  color: #0f0 !important;
+//  outline: solid #f00 1px !important;
+//}
+
+html{
+  scroll-behavior: smooth;
+}
+
 body{
   font-family: $roboto;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
 }
 
 .navbar{
@@ -15,71 +30,93 @@ body{
 
 .navbar-brand{
   font-family: $kalam;
-  color: $white;
+  color: $black;
   font-size: 2.2rem;
   padding: 0;
   &:hover{
-    color: $fog;
+    color: $paua;
   }
 }
 
 .navbar-nav{
   font-family: $quicksand;
-  color: $white;
+  font-weight: 600;
+  color: $black;
   letter-spacing: 0.7px;
   &:hover{
     text-decoration: none;
-    color: $fog;
+    color: $paua;
+    border-bottom: 2px solid $paua;
   }
   &.is-active{
-    color: $white;
-    font-weight: 600;
-    border-bottom: 2px solid $white;
+    color: $black;
+    border-bottom: 2px solid $paua;
   }
 }
 
 .jumbotron-hero{
   position: relative;
-  background: url("/assets/img/hero-bg-min.jpg") no-repeat bottom center / cover;
-  &:before{
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    max-height: 100vh;
-    background: rgba(0, 0, 0, .6);
-  }
+  background-color: $white;
+  height: 100vh;
   .hero-content{
     padding: 75px 0;
   }
-  h1 {
-    color: $white;
-    font-family: $roboto;
+  .hero-title{
+    color: $black;
+    font-family: $quicksand;
+    font-size: 4em;
+    @media (max-width: 960px) {
+      font-size: 3.5em;
+    }
+    @media (max-width: 768px) {
+      font-size: 3em;
+    }
+    @media (max-width: 576px) {
+      font-size: 2.5em;
+    }
   }
-  .subtitle {
-    color: $white;
+  .hero-subtitle{
+    color: $black;
     font-family: $roboto;
+    font-size: 1.2em;
   }
 }
 
-/* Custom button */
 .hero-btn {
   margin-top: 15px;
-  padding: 10px 20px;
-  background: transparent;
+  padding: 10px 15px;
+  background: $mauve-dark;
   color: $white;
-  font-family: $roboto;
-  font-size: 1.2em;
-  border: 2px solid $white;
-  border-radius: 0;
+  font-family: $quicksand;
+  font-size: 1.1em;
+  font-weight: 600;
+  border: 2px solid $mauve-dark;
+  border-radius: 10px;
   transition: 0.25s;
   &:hover,
   &:focus{
-    color: $paua;
-    box-shadow: inset 0 -3em 0 0 $fog;
-    border: 2px solid $fog;
+    color: $white;
+    box-shadow: inset 0 -3.5em 0 0 $mauve;
+    border: 2px solid $mauve;
+  }
+}
+
+.hero-btn--2 {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: transparent;
+  color: $mauve-dark;
+  font-family: $quicksand;
+  font-size: 1.1em;
+  font-weight: 600;
+  border: 2px solid $mauve;
+  border-radius: 10px;
+  transition: 0.25s;
+  &:hover,
+  &:focus{
+    color: $white;
+    box-shadow: inset 8.5em 0 0 0 $mauve-dark;
+    border: 2px solid $mauve-dark;
   }
 }
 
@@ -89,15 +126,36 @@ body{
 
 .section-2{
   background-color: $blue-chalk;
+  transform: skewY(-3deg);
+  margin: -15px 0;
+  padding: 50px 0;
+  .container{
+    transform: skewY(3deg);
+    padding-top: 10vh;
+  }
 }
 
 .form-control{
-  border-color: $fog;
+  border-color: $mauve-dark;
 }
 
-.embed-responsive-item.video-preview{
+.video-section{
+  border: 1px solid $mauve-dark;
+  border-radius: 10px;
   background-color: $blue-chalk-dark;
-  h3{
-    color: $mauve-dark;
+}
+
+.sticky-top{
+  top: 30px;
+}
+
+.embed-responsive{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  .embed-responsive-item.video-preview{
+    background-color: $blue-chalk;
+    h3{
+      color: $mauve-dark;
+    }
   }
 }
