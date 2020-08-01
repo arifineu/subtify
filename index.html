@@ -85,16 +85,16 @@
             <div class="d-flex justify-content-between mb-4">
               <p class="my-auto">Page: <span class="font-weight-bold">{{ pagination.page }}</span></p>
               <div class="control-buttons">
-                <button class="btn btn-icon" @click="navigasi('first')" :disabled="!pagination['first']">
+                <button class="btn btn-icon" @click="navigation('first')" :disabled="!pagination['first']">
                   <i data-feather="chevrons-left"></i>
                 </button>
-                <button class="btn btn-icon" @click="navigasi('prev')" :disabled="!pagination['prev']">
+                <button class="btn btn-icon" @click="navigation('prev')" :disabled="!pagination['prev']">
                   <i data-feather="chevron-left"></i>
                 </button>
-                <button class="btn btn-icon" @click="navigasi('next')" :disabled="!pagination['next']">
+                <button class="btn btn-icon" @click="navigation('next')" :disabled="!pagination['next']">
                   <i data-feather="chevron-right"></i>
                 </button>
-                <button class="btn btn-icon" @click="navigasi('last')" :disabled="!pagination['last']">
+                <button class="btn btn-icon" @click="navigation('last')" :disabled="!pagination['last']">
                   <i data-feather="chevrons-right"></i>
                 </button>
               </div>
@@ -196,7 +196,7 @@
                       this.wordsFound = respon.total
                   } catch (error) {}
               },
-              async navigasi(type) {
+              async navigation(type) {
                   if (!this.pagination[type]) {
                       return
                   }
