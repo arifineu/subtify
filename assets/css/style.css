@@ -196,4 +196,20 @@ body {
   color: #C49CFC;
 }
 
+.btn-icon {
+  background-color: #DAC1FF;
+  padding: 5px 8px;
+  border-radius: 100%;
+}
+.btn-icon:hover, .btn-icon:focus {
+  background-color: #C49CFC;
+  outline: none;
+  box-shadow: none;
+}
+.btn-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: #2D0367;
+}
+
 /*# sourceMappingURL=style.css.map */

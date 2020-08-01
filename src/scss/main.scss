@@ -159,3 +159,19 @@ body{
     }
   }
 }
+
+.btn-icon{
+  background-color: $fog;
+  padding: 5px 8px;
+  border-radius: 100%;
+  &:hover, &:focus{
+    background-color: $mauve-dark;
+    outline: none;
+    box-shadow: none;
+  }
+  svg{
+    width: 16px;
+    height: 16px;
+    stroke: $paua;
+  }
+}
