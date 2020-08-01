@@ -79,21 +79,26 @@
               <li>Keywords must contains at least 3 characters</li>
             </ul>
             <h5 class="mt-5 mb-3">Result</h5>
-            <button class="bersihkan" @click="bersihkan">Bersihkan</button>
-            <button class="pertama" @click="navigasi('first')" :disabled="!paginasi['first']">
-              First
-            </button>
-            <button class="sebelumnya" @click="navigasi('prev')" :disabled="!paginasi['prev']">
-              Prev
-            </button>
-            <button class="selanjutnya" @click="navigasi('next')" :disabled="!paginasi['next']">
-              Next
-            </button>
-            <button class="terakhir" @click="navigasi('last')" :disabled="!paginasi['last']">
-              Last
-            </button>
-            <div class="total mb-5">Total Hasil: {{ paginasi.total }}</div>
-            <div class="halaman mb-5">Halaman ke: {{ paginasi.page }}</div>
+            <p class="mb-3">
+              <span class="font-weight-bold">{{ wordsFound }}</span> words found!
+            </p>
+            <div class="d-flex justify-content-between">
+              <p class="my-auto">Page: <span class="font-weight-bold">{{ paginasi.page }}</span></p>
+              <div class="control-buttons">
+                <button class="btn btn-icon" @click="navigasi('first')">
+                  <i data-feather="chevrons-left"></i>
+                </button>
+                <button class="btn btn-icon" @click="navigasi('prev')" :disabled="!paginasi['prev']">
+                  <i data-feather="chevron-left"></i>
+                </button>
+                <button class="btn btn-icon" @click="navigasi('next')" :disabled="!paginasi['next']">
+                  <i data-feather="chevron-right"></i>
+                </button>
+                <button class="btn btn-icon" @click="navigasi('last')" :disabled="!paginasi['last']">
+                  <i data-feather="chevrons-right"></i>
+                </button>
+              </div>
+            </div>
             <ul class="daftar">
               <li v-for="(hasil, i) in daftarHasil" :key="i" class="mb-3">
                 <span v-html="hasil.text"></span>
@@ -124,9 +129,9 @@
                   last: null,
                   prev: null,
                   next: null,
-                  total: 0,
                   page: null
               },
+              wordsFound: 0,
               urlValidation: false,
               videoId: null,
               // videoData: [],
@@ -187,8 +192,8 @@
                       this.paginasi.last = respon.last
                       this.paginasi.prev = respon.prev
                       this.paginasi.next = respon.next
-                      this.paginasi.total = respon.total
                       this.paginasi.page = respon.page
+                      this.wordsFound = respon.total
                   } catch (error) {}
               },
               async navigasi(type) {
@@ -208,9 +213,9 @@
                       last: null,
                       prev: null,
                       next: null,
-                      total: 0,
                       page: null
-                  }
+                  },
+                  this.wordsFound = 0
               }
           }
       })
