@@ -83,18 +83,18 @@
               <span class="font-weight-bold">{{ wordsFound }}</span> words found!
             </p>
             <div class="d-flex justify-content-between">
-              <p class="my-auto">Page: <span class="font-weight-bold">{{ paginasi.page }}</span></p>
+              <p class="my-auto">Page: <span class="font-weight-bold">{{ pagination.page }}</span></p>
               <div class="control-buttons">
                 <button class="btn btn-icon" @click="navigasi('first')">
                   <i data-feather="chevrons-left"></i>
                 </button>
-                <button class="btn btn-icon" @click="navigasi('prev')" :disabled="!paginasi['prev']">
+                <button class="btn btn-icon" @click="navigasi('prev')" :disabled="!pagination['prev']">
                   <i data-feather="chevron-left"></i>
                 </button>
-                <button class="btn btn-icon" @click="navigasi('next')" :disabled="!paginasi['next']">
+                <button class="btn btn-icon" @click="navigasi('next')" :disabled="!pagination['next']">
                   <i data-feather="chevron-right"></i>
                 </button>
-                <button class="btn btn-icon" @click="navigasi('last')" :disabled="!paginasi['last']">
+                <button class="btn btn-icon" @click="navigasi('last')" :disabled="!pagination['last']">
                   <i data-feather="chevrons-right"></i>
                 </button>
               </div>
@@ -124,7 +124,7 @@
               url: null,
               kataKunci: '',
               daftarHasil: [],
-              paginasi: {
+              pagination: {
                   first: null,
                   last: null,
                   prev: null,
@@ -144,14 +144,14 @@
                   if (url && url.length >= 3) {
                       await this.validation(url, this.url)
                   } else {
-                      this.bersihkanHasilDanPaginasi()
+                      this.bersihkanHasilDanpagination()
                   }
               }, 250),
               kataKunci: pDebounce(async function handleKeywords(kataKunci) {
                   if (kataKunci && kataKunci.length >= 3) {
                       await this.cari(kataKunci, this.url)
                   } else {
-                      this.bersihkanHasilDanPaginasi()
+                      this.bersihkanHasilDanpagination()
                   }
               }, 250)
           },
@@ -180,35 +180,35 @@
                   this.channelUrl = 'https://youtube.com/channel/'+data.items[0].snippet.channelId
                   // console.log(this.videoData)
               },
-              async cari(kataKunci, url, paginasi) {
+              async cari(kataKunci, url, pagination) {
                   try {
                       const respon = await fetch(
-                          paginasi
-                              ? paginasi
+                          pagination
+                              ? pagination
                               : `https://cari-teks-video-api.vercel.app/api/search?q=${kataKunci}&url=${encodeURIComponent(url)}`
                       ).then(_ => (_.ok ? _.json() : []))
                       this.daftarHasil = respon.data
-                      this.paginasi.first = respon.first
-                      this.paginasi.last = respon.last
-                      this.paginasi.prev = respon.prev
-                      this.paginasi.next = respon.next
-                      this.paginasi.page = respon.page
+                      this.pagination.first = respon.first
+                      this.pagination.last = respon.last
+                      this.pagination.prev = respon.prev
+                      this.pagination.next = respon.next
+                      this.pagination.page = respon.page
                       this.wordsFound = respon.total
                   } catch (error) {}
               },
               async navigasi(type) {
-                  if (!this.paginasi[type]) {
+                  if (!this.pagination[type]) {
                       return
                   }
-                  await this.cari(this.kataKunci, this.url, this.paginasi[type])
+                  await this.cari(this.kataKunci, this.url, this.pagination[type])
               },
               bersihkan() {
                   this.kataKunci = ''
-                  this.bersihkanHasilDanPaginasi()
+                  this.bersihkanHasilDanpagination()
               },
-              bersihkanHasilDanPaginasi() {
+              bersihkanHasilDanpagination() {
                   this.daftarHasil = []
-                  this.paginasi = {
+                  this.pagination = {
                       first: null,
                       last: null,
                       prev: null,
