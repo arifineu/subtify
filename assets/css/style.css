@@ -201,8 +201,13 @@ body {
   padding: 5px 8px;
   border-radius: 100%;
 }
-.btn-icon:hover, .btn-icon:focus {
+.btn-icon:hover {
   background-color: #C49CFC;
+  outline: none;
+  box-shadow: none;
+}
+.btn-icon:focus {
+  background-color: #DAC1FF;
   outline: none;
   box-shadow: none;
 }
