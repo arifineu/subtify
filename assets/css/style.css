@@ -217,4 +217,8 @@ body {
   stroke: #2D0367;
 }
 
+.caption-result mark {
+  background-color: #C49CFC;
+}
+
 /*# sourceMappingURL=style.css.map */
