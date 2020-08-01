@@ -92,12 +92,26 @@ body{
 }
 
 .form-control{
-  border-color: $fog;
+  border-color: $mauve-dark;
 }
 
-.embed-responsive-item.video-preview{
+.video-section{
+  border: 1px solid $mauve-dark;
+  border-radius: 10px;
   background-color: $blue-chalk-dark;
-  h3{
-    color: $mauve-dark;
+}
+
+.sticky-top{
+  top: 30px;
+}
+
+.embed-responsive{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  .embed-responsive-item.video-preview{
+    background-color: $blue-chalk;
+    h3{
+      color: $mauve-dark;
+    }
   }
 }
