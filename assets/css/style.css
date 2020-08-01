@@ -2,6 +2,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 /* */
+/* Font Clasess */
+.quicksand {
+  font-family: "Quicksand", sans-serif;
+}
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+/* */
 /* Generated Colors from mixin */
 .text--white, .bg-color--white {
   color: #ffffff;
@@ -119,13 +129,27 @@ body {
 }
 
 .form-control {
-  border-color: #DAC1FF;
+  border-color: #C49CFC;
 }
 
-.embed-responsive-item.video-preview {
+.video-section {
+  border: 1px solid #C49CFC;
+  border-radius: 10px;
   background-color: #e8d8ff;
 }
-.embed-responsive-item.video-preview h3 {
+
+.sticky-top {
+  top: 30px;
+}
+
+.embed-responsive {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.embed-responsive .embed-responsive-item.video-preview {
+  background-color: #F0E6FF;
+}
+.embed-responsive .embed-responsive-item.video-preview h3 {
   color: #C49CFC;
 }
 
