@@ -69,7 +69,7 @@
               </small>
             </div>
             <div class="form-group">
-              <input type="text" v-model="kataKunci" class="form-control kataKunci" placeholder="Type your keywords here" :disabled="!url||urlValidation">
+              <input type="text" v-model="keyWord" class="form-control" placeholder="Type your keywords here" :disabled="!url||urlValidation">
               <small class="form-text text-danger" v-if="!url||urlValidation">Please fill Youtube link first!</small>
               <small class="form-text text-secondary" v-else>Example: web</small>
             </div>
@@ -82,10 +82,10 @@
             <p class="mb-3">
               <span class="font-weight-bold">{{ wordsFound }}</span> words found!
             </p>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mb-4">
               <p class="my-auto">Page: <span class="font-weight-bold">{{ pagination.page }}</span></p>
               <div class="control-buttons">
-                <button class="btn btn-icon" @click="navigasi('first')">
+                <button class="btn btn-icon" @click="navigasi('first')" :disabled="!pagination['first']">
                   <i data-feather="chevrons-left"></i>
                 </button>
                 <button class="btn btn-icon" @click="navigasi('prev')" :disabled="!pagination['prev']">
@@ -122,7 +122,7 @@
           el: '#app',
           data: {
               url: null,
-              kataKunci: '',
+              keyWord: '',
               daftarHasil: [],
               pagination: {
                   first: null,
@@ -147,9 +147,9 @@
                       this.bersihkanHasilDanpagination()
                   }
               }, 250),
-              kataKunci: pDebounce(async function handleKeywords(kataKunci) {
-                  if (kataKunci && kataKunci.length >= 3) {
-                      await this.cari(kataKunci, this.url)
+              keyWord: pDebounce(async function handleKeywords(keyWord) {
+                  if (keyWord && keyWord.length >= 3) {
+                      await this.cari(keyWord, this.url)
                   } else {
                       this.bersihkanHasilDanpagination()
                   }
@@ -180,12 +180,12 @@
                   this.channelUrl = 'https://youtube.com/channel/'+data.items[0].snippet.channelId
                   // console.log(this.videoData)
               },
-              async cari(kataKunci, url, pagination) {
+              async cari(keyWord, url, pagination) {
                   try {
                       const respon = await fetch(
                           pagination
                               ? pagination
-                              : `https://cari-teks-video-api.vercel.app/api/search?q=${kataKunci}&url=${encodeURIComponent(url)}`
+                              : `https://cari-teks-video-api.vercel.app/api/search?q=${keyWord}&url=${encodeURIComponent(url)}`
                       ).then(_ => (_.ok ? _.json() : []))
                       this.daftarHasil = respon.data
                       this.pagination.first = respon.first
@@ -200,10 +200,10 @@
                   if (!this.pagination[type]) {
                       return
                   }
-                  await this.cari(this.kataKunci, this.url, this.pagination[type])
+                  await this.cari(this.keyWord, this.url, this.pagination[type])
               },
               bersihkan() {
-                  this.kataKunci = ''
+                  this.keyWord = ''
                   this.bersihkanHasilDanpagination()
               },
               bersihkanHasilDanpagination() {
