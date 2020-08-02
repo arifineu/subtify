@@ -174,11 +174,15 @@ body {
 .form-control {
   border-color: #C49CFC;
 }
+.form-control:focus {
+  border-color: #C49CFC;
+  box-shadow: 0 0 0 0.2rem #DAC1FF;
+}
 
 .video-section {
-  border: 1px solid #C49CFC;
   border-radius: 10px;
   background-color: #e8d8ff;
+  box-shadow: -5px -5px 15px #F8F3FF, 5px 5px 15px #DAC1FF;
 }
 
 .sticky-top {
