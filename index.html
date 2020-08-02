@@ -55,8 +55,17 @@
                 <iframe class="embed-responsive-item videoId" :src="videoId" v-if="videoId" allowfullscreen></iframe>
               </div>
               <div class="px-3 py-3">
-                <p class="font-weight-bold mb-1">Video title: <span class="font-weight-normal">{{ videoTitle }}</span></p>
-                <p class="font-weight-bold mb-0">From channel: <a :href="channelUrl" class="font-weight-normal">{{ videoChannel }}</a></p>
+                <div v-if="!errorCode">
+                  <p class="font-weight-bold mb-1">Video title: <span class="font-weight-normal">{{ videoTitle }}</span></p>
+                  <p class="font-weight-bold mb-0">From channel: <a :href="channelUrl" class="font-weight-normal">{{ videoChannel }}</a></p>
+                </div>
+                <div v-else class="d-flex justify-content-center align-items-center">
+                  <p class="text-center">
+                    <span class="font-weight-bold">Error {{ errorCode }}</span>
+                    <br>
+                    {{ errorMessage }}. Please contact website administrator
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -143,7 +152,9 @@
               videoId: null,
               videoTitle: '',
               videoChannel: '',
-              channelUrl: ''
+              channelUrl: '',
+              errorCode: null,
+              errorMessage: null
           },
           watch: {
               url: pDebounce(async function handleUrl(url) {
@@ -180,9 +191,24 @@
               async videoApi(videoId) {
                   const response = await fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+ videoId +'&fields=items(id,snippet)&key=AIzaSyB0fl8R_UJhBzBbbRGqZbmqENQG1IDFve4')
                   const data = await response.json()
-                  this.videoTitle = data.items[0].snippet.title
-                  this.videoChannel = data.items[0].snippet.channelTitle
-                  this.channelUrl = 'https://youtube.com/channel/'+data.items[0].snippet.channelId
+                  errorCode = data.error
+                  if (errorCode==='undefined'||errorCode==null){
+                      this.videoTitle = data.items[0].snippet.title
+                      this.videoChannel = data.items[0].snippet.channelTitle
+                      this.channelUrl = 'https://youtube.com/channel/'+data.items[0].snippet.channelId
+                  } else {
+                      const response = await fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+ videoId +'&fields=items(id,snippet)&key=AIzaSyAZr7DL1Ywxa5va36Z2ep24JTX4-ezsksQ')
+                      const data = await response.json()
+                      errorCode = data.error
+                      if (errorCode==='undefined'||errorCode==null) {
+                          this.videoTitle = data.items[0].snippet.title
+                          this.videoChannel = data.items[0].snippet.channelTitle
+                          this.channelUrl = 'https://youtube.com/channel/' + data.items[0].snippet.channelId
+                      } else {
+                          this.errorCode = data.error.code
+                          this.errorMessage = data.error.errors[0].reason
+                      }
+                  }
               },
               async cari(keyWord, url, pagination) {
                   try {
