@@ -168,11 +168,15 @@ body{
     background-color: $mauve-dark;
     outline: none;
     box-shadow: none;
+    cursor: pointer;
   }
   &:focus{
     background-color: $fog;
     outline: none;
     box-shadow: none;
+  }
+  &:disabled:hover{
+    cursor: default;
   }
   svg{
     width: 16px;
