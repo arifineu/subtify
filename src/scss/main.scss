@@ -140,9 +140,10 @@ body{
 }
 
 .video-section{
-  border: 1px solid $mauve-dark;
+  //border: 1px solid $mauve-dark;
   border-radius: 10px;
   background-color: $blue-chalk-dark;
+  box-shadow: -5px -5px 15px $magnolia, 5px 5px 15px $fog;
 }
 
 .sticky-top{

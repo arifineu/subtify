@@ -176,9 +176,9 @@ body {
 }
 
 .video-section {
-  border: 1px solid #C49CFC;
   border-radius: 10px;
   background-color: #e8d8ff;
+  box-shadow: -5px -5px 15px #F8F3FF, 5px 5px 15px #DAC1FF;
 }
 
 .sticky-top {
