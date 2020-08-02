@@ -159,3 +159,34 @@ body{
     }
   }
 }
+
+.btn-icon{
+  background-color: $fog;
+  padding: 5px 8px;
+  border-radius: 100%;
+  &:hover{
+    background-color: $mauve-dark;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+  }
+  &:focus{
+    background-color: $fog;
+    outline: none;
+    box-shadow: none;
+  }
+  &:disabled:hover{
+    cursor: default;
+  }
+  svg{
+    width: 16px;
+    height: 16px;
+    stroke: $paua;
+  }
+}
+
+.caption-result{
+  mark{
+    background-color: $mauve-dark;
+  }
+}
