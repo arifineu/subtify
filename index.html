@@ -62,7 +62,7 @@
           </div>
           <div class="col-md-6 order-md-0 pr-md-5">
             <div class="form-group">
-              <input type="text" v-model="url" class="form-control url" v-bind:class="{false: urlValidation, 'is-invalid': urlValidation}" placeholder="Paste Youtube video link here">
+              <input type="text" v-model="url" class="form-control" v-bind:class="{false: urlValidation, 'is-invalid': urlValidation}" placeholder="Paste Youtube video link here">
               <small class="form-text text-danger" v-if="urlValidation&&url">URL not valid, please insert a valid Youtube video URL</small>
               <small class="form-text text-secondary" v-if="!urlValidation||!url">
                 <span class="font-weight-bold">Example: </span>https://www.youtube.com/watch?v=klnvttPfOUM

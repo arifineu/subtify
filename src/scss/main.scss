@@ -137,6 +137,10 @@ body{
 
 .form-control{
   border-color: $mauve-dark;
+  &:focus{
+    border-color: $mauve-dark;
+    box-shadow: 0 0 0 0.2rem $fog;
+  }
 }
 
 .video-section{
