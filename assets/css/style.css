@@ -91,30 +91,29 @@ body {
   background-color: #ffffff;
   height: 100vh;
 }
-.jumbotron-hero .hero-content {
-  padding: 75px 0;
-}
-.jumbotron-hero .hero-title {
+
+.hero-title {
   color: #000000;
   font-family: "Quicksand", sans-serif;
   font-size: 4em;
 }
 @media (max-width: 960px) {
-  .jumbotron-hero .hero-title {
+  .hero-title {
     font-size: 3.5em;
   }
 }
 @media (max-width: 768px) {
-  .jumbotron-hero .hero-title {
+  .hero-title {
     font-size: 3em;
   }
 }
 @media (max-width: 576px) {
-  .jumbotron-hero .hero-title {
+  .hero-title {
     font-size: 2.5em;
   }
 }
-.jumbotron-hero .hero-subtitle {
+
+.hero-subtitle {
   color: #000000;
   font-family: "Roboto", sans-serif;
   font-size: 1.2em;
@@ -163,7 +162,7 @@ body {
 .section-2 {
   background-color: #F0E6FF;
   transform: skewY(-3deg);
-  margin: -15px 0;
+  margin: 0;
   padding: 50px 0;
 }
 .section-2 .container {
