@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 /* */
 /* Font Clasess */
@@ -15,34 +15,78 @@
   font-family: "Roboto", sans-serif;
 }
 
+.font-weight-400 {
+  font-weight: 400;
+}
+
+.font-weight-500 {
+  font-weight: 500;
+}
+
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.font-weight-700 {
+  font-weight: 700;
+}
+
 /* */
 /* Generated Colors from mixin */
-.text--white, .bg-color--white {
+.text--white {
   color: #ffffff;
 }
-.text--magnolia, .bg-color--magnolia {
+.text--magnolia {
   color: #F8F3FF;
 }
-.text--blue-chalk, .bg-color--blue-chalk {
-  color: #e8d8ff;
-}
-.text--blue-chalk-dark, .bg-color--blue-chalk-dark {
+.text--blue-chalk {
   color: #F0E6FF;
 }
-.text--fog, .bg-color--fog {
+.text--blue-chalk-dark {
+  color: #e8d8ff;
+}
+.text--fog {
   color: #DAC1FF;
 }
-.text--mauve, .bg-color--mauve {
+.text--mauve {
   color: #D2B4FF;
 }
-.text--mauve-dark, .bg-color--mauve-dark {
+.text--mauve-dark {
   color: #c49cfc;
 }
-.text--paua, .bg-color--paua {
+.text--paua {
   color: #2d0367;
 }
-.text--black, .bg-color--black {
+.text--black {
   color: #000000;
+}
+
+.bg-color--white {
+  background-color: #ffffff;
+}
+.bg-color--magnolia {
+  background-color: #F8F3FF;
+}
+.bg-color--blue-chalk {
+  background-color: #F0E6FF;
+}
+.bg-color--blue-chalk-dark {
+  background-color: #e8d8ff;
+}
+.bg-color--fog {
+  background-color: #DAC1FF;
+}
+.bg-color--mauve {
+  background-color: #D2B4FF;
+}
+.bg-color--mauve-dark {
+  background-color: #c49cfc;
+}
+.bg-color--paua {
+  background-color: #2d0367;
+}
+.bg-color--black {
+  background-color: #000000;
 }
 
 /* */
@@ -239,6 +283,15 @@ body {
 .section-3 .container {
   padding-top: 15vh;
   padding-bottom: 10vh;
+}
+
+footer p {
+  margin: 0;
+}
+footer p svg {
+  fill: #dc3545;
+  width: 16px;
+  height: 16px;
 }
 
 /*# sourceMappingURL=style.css.map */
