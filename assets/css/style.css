@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap");
 /* */
 /* Font Clasess */
 .kalam {
@@ -13,6 +14,10 @@
 
 .roboto {
   font-family: "Roboto", sans-serif;
+}
+
+.comfortaa {
+  font-family: "Comfortaa", cursive;
 }
 
 .font-weight-400 {
@@ -208,7 +213,7 @@ body {
 }
 
 .section-2 {
-  background-color: #F0E6FF;
+  background-color: #F8F3FF;
   transform: skewY(-3deg);
   margin: 0;
   padding: 50px 0;
@@ -220,17 +225,17 @@ body {
 }
 
 .form-control {
-  border-color: #C49CFC;
+  border-color: #D2B4FF;
 }
 .form-control:focus {
-  border-color: #C49CFC;
-  box-shadow: 0 0 0 0.2rem #DAC1FF;
+  border-color: #D2B4FF;
+  box-shadow: 0 0 0 0.2rem #e8d8ff;
 }
 
 .video-section {
   border-radius: 10px;
-  background-color: #e8d8ff;
-  box-shadow: -5px -5px 15px #F8F3FF, 5px 5px 15px #DAC1FF;
+  background-color: #F0E6FF;
+  box-shadow: -5px -5px 15px #ffffff, 5px 5px 15px #DAC1FF;
 }
 
 .sticky-top {
@@ -242,7 +247,7 @@ body {
   border-top-right-radius: 10px;
 }
 .embed-responsive .embed-responsive-item.video-preview {
-  background-color: #F0E6FF;
+  background-color: #F8F3FF;
 }
 .embed-responsive .embed-responsive-item.video-preview h3 {
   color: #C49CFC;
@@ -286,6 +291,14 @@ body {
 }
 .section-3 .container .feature {
   margin-top: 20vh;
+}
+
+.section-4 {
+  padding: 50px 0;
+}
+.section-4 .container {
+  padding-top: 10vh;
+  padding-bottom: 10vh;
 }
 
 footer p {
