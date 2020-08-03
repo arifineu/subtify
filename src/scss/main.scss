@@ -199,5 +199,19 @@ body{
   .container{
     padding-top: 15vh;
     padding-bottom: 10vh;
+    .feature{
+      margin-top: 20vh;
+    }
+  }
+}
+
+footer{
+  p{
+    margin: 0;
+    svg{
+      fill: #dc3545;
+      width: 16px;
+      height: 16px;
+    }
   }
 }

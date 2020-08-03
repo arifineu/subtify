@@ -13,8 +13,8 @@ $black: #000000;
 $colors: (
   white: #ffffff,
   magnolia: #F8F3FF,
-  blue-chalk: #e8d8ff,
-  blue-chalk-dark: #F0E6FF,
+  blue-chalk: #F0E6FF,
+  blue-chalk-dark: #e8d8ff,
   fog: #DAC1FF,
   mauve: #D2B4FF,
   mauve-dark: #c49cfc,
@@ -33,6 +33,19 @@ $colors: (
 
 /* */
 /* Generated Colors from mixin */
-.text, .bg-color {
+.text {
+  @include color-modifiers($prefix: '--');;
+}
+
+// Bg-Color Mixin
+@mixin color-modifiers($attribute: 'background-color', $prefix: '-') {
+  @each $name, $hex in $colors {
+    &#{$prefix}#{$name} {
+      #{$attribute}: $hex;
+    }
+  }
+}
+
+.bg-color {
   @include color-modifiers($prefix: '--');;
 }
