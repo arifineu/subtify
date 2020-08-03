@@ -199,10 +199,11 @@ body{
   .container{
     padding-top: 15vh;
     padding-bottom: 10vh;
+    .feature{
+      margin-top: 20vh;
+    }
   }
 }
-
-
 
 footer{
   p{

@@ -284,6 +284,9 @@ body {
   padding-top: 15vh;
   padding-bottom: 10vh;
 }
+.section-3 .container .feature {
+  margin-top: 20vh;
+}
 
 footer p {
   margin: 0;
