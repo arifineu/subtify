@@ -125,7 +125,7 @@
     </section>
     <section class="section-3">
       <div class="container">
-
+        
       </div>
     </section>
   </div>
@@ -163,14 +163,14 @@
                   if (url && url.length >= 3) {
                       await this.validation(url, this.url)
                   } else {
-                      this.bersihkanHasilDanpagination()
+                      this.clearResultAndPagination()
                   }
               }, 250),
               keyWord: pDebounce(async function handleKeywords(keyWord) {
                   if (keyWord && keyWord.length >= 3) {
                       await this.cari(keyWord, this.url)
                   } else {
-                      this.bersihkanHasilDanpagination()
+                      this.clearResultAndPagination()
                   }
               }, 250)
           },
@@ -242,11 +242,7 @@
                   }
                   await this.cari(this.keyWord, this.url, this.pagination[type])
               },
-              bersihkan() {
-                  this.keyWord = ''
-                  this.bersihkanHasilDanpagination()
-              },
-              bersihkanHasilDanpagination() {
+              clearResultAndPagination() {
                   this.responseList = []
                   this.pagination = {
                       first: null,
