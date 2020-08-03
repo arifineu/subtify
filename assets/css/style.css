@@ -3,6 +3,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 /* */
 /* Font Clasess */
+.kalam {
+  font-family: "Kalam", cursive;
+}
+
 .quicksand {
   font-family: "Quicksand", sans-serif;
 }
@@ -167,8 +171,8 @@ body {
 }
 .section-2 .container {
   transform: skewY(3deg);
-  padding-top: 10vh;
-  padding-bottom: 5vh;
+  padding-top: 12vh;
+  padding-bottom: 10vh;
 }
 
 .form-control {
@@ -227,6 +231,14 @@ body {
 
 .caption-result mark {
   background-color: #C49CFC;
+}
+
+.section-3 {
+  padding: 50px 0;
+}
+.section-3 .container {
+  padding-top: 15vh;
+  padding-bottom: 10vh;
 }
 
 /*# sourceMappingURL=style.css.map */

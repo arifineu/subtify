@@ -128,8 +128,8 @@ body{
   padding: 50px 0;
   .container{
     transform: skewY(3deg);
-    padding-top: 10vh;
-    padding-bottom: 5vh;
+    padding-top: 12vh;
+    padding-bottom: 10vh;
   }
 }
 
@@ -191,5 +191,13 @@ body{
 .caption-result{
   mark{
     background-color: $mauve-dark;
+  }
+}
+
+.section-3{
+  padding: 50px 0;
+  .container{
+    padding-top: 15vh;
+    padding-bottom: 10vh;
   }
 }
