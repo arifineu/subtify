@@ -30,27 +30,27 @@ body{
 
 .navbar-brand{
   font-family: $kalam;
-  color: $black;
+  color: $paua;
   font-size: 2.2rem;
   padding: 0;
   &:hover{
-    color: $paua;
+    color: $black;
   }
 }
 
 .navbar-nav{
   font-family: $quicksand;
   font-weight: 600;
-  color: $black;
+  color: $paua;
   letter-spacing: 0.7px;
   &:hover{
     text-decoration: none;
-    color: $paua;
-    border-bottom: 2px solid $paua;
+    color: $black;
+    border-bottom: 2px solid $black;
   }
   &.is-active{
     color: $black;
-    border-bottom: 2px solid $paua;
+    border-bottom: 2px solid $black;
   }
 }
 
