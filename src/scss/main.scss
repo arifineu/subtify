@@ -1,6 +1,5 @@
 @import "fonts";
 @import "colors";
-@import "base";
 
 /* */
 /* Custom style begin */
@@ -122,7 +121,7 @@ body{
 }
 
 .section-2{
-  background-color: $blue-chalk;
+  background-color: $magnolia;
   transform: skewY(-3deg);
   margin: 0;
   padding: 50px 0;
@@ -134,18 +133,18 @@ body{
 }
 
 .form-control{
-  border-color: $mauve-dark;
+  border-color: $mauve;
   &:focus{
-    border-color: $mauve-dark;
-    box-shadow: 0 0 0 0.2rem $fog;
+    border-color: $mauve;
+    box-shadow: 0 0 0 0.2rem $blue-chalk-dark;
   }
 }
 
 .video-section{
   //border: 1px solid $mauve-dark;
   border-radius: 10px;
-  background-color: $blue-chalk-dark;
-  box-shadow: -5px -5px 15px $magnolia, 5px 5px 15px $fog;
+  background-color: $blue-chalk;
+  box-shadow: -5px -5px 15px $white, 5px 5px 15px $fog;
 }
 
 .sticky-top{
@@ -156,7 +155,7 @@ body{
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   .embed-responsive-item.video-preview{
-    background-color: $blue-chalk;
+    background-color: $magnolia;
     h3{
       color: $mauve-dark;
     }
@@ -202,6 +201,14 @@ body{
     .feature{
       margin-top: 20vh;
     }
+  }
+}
+
+.section-4{
+  padding: 50px 0;
+  .container{
+    padding-top: 10vh;
+    padding-bottom: 10vh;
   }
 }
 
