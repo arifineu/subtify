@@ -54,7 +54,7 @@
                 </div>
                 <iframe class="embed-responsive-item videoId" :src="videoId" v-if="videoId" allowfullscreen></iframe>
               </div>
-              <div class="px-3 py-3">
+              <div v-if="url||urlValidation" class="px-3 py-3">
                 <div v-if="!errorCode">
                   <p class="font-weight-bold mb-1">Video title: <span class="font-weight-normal">{{ videoTitle }}</span></p>
                   <p class="font-weight-bold mb-0">From channel: <a :href="channelUrl" class="font-weight-normal">{{ videoChannel }}</a></p>
