@@ -1,6 +1,6 @@
 // Google Fonts
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 // Fonts Variables
@@ -13,10 +13,22 @@ $roboto: 'Roboto', sans-serif;
 .kalam{
   font-family: $kalam;
 }
-
 .quicksand{
   font-family: $quicksand;
 }
 .roboto{
   font-family: $roboto;
+}
+
+.font-weight-400{
+  font-weight: 400;
+}
+.font-weight-500{
+  font-weight: 500;
+}
+.font-weight-600{
+  font-weight: 600;
+}
+.font-weight-700{
+  font-weight: 700;
 }
