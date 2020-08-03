@@ -169,6 +169,7 @@ body {
 .section-2 .container {
   transform: skewY(3deg);
   padding-top: 10vh;
+  padding-bottom: 5vh;
 }
 
 .form-control {
