@@ -4,6 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta charset="UTF-8">
   <title>Search Video Caption by Arifin Izzah</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -22,7 +23,7 @@
           <div class="col-lg-6 order-lg-1 d-none d-lg-flex justify-content-center align-content-center">
             <div class="card card-body bg-transparent border-0">
               <div class="my-auto">
-                <img src="assets/img/undraw_in_sync_xwsa.svg" class="img-fluid" alt="">
+                <img src="assets/svg/undraw_in_sync_xwsa.svg" class="img-fluid" alt="">
               </div>
             </div>
           </div>
@@ -35,7 +36,7 @@
                   words in YouTube caption quickly. Then Subtify can be your choice
                 </p>
                 <a class="btn btn-lg hero-btn" href="#findWords" role="button">Find Words</a>
-                <a class="btn btn-lg hero-btn--2 ml-3" href="#findWords" role="button">Learn More</a>
+                <a class="btn btn-lg hero-btn--2 ml-3" href="#learnMore" role="button">Learn More</a>
               </div>
             </div>
           </div>
@@ -44,9 +45,9 @@
     </section>
     <section class="section-2">
       <div class="container" id="findWords">
-        <h3 class="mb-3">Find Words</h3>
+        <h3 class="mb-5 mb-md-3">Find Words</h3>
         <div class="row mb-5">
-          <div class="col-md-6 order-md-1 mb-4 mb-md-0">
+          <div class="col-md-6 order-md-1 mb-5 mb-md-0">
             <div class="video-section sticky-top ml-0 ml-md-1">
               <div class="embed-responsive embed-responsive-16by9">
                 <div class="embed-responsive-item video-preview d-flex justify-content-center align-items-center" v-if="!videoId">
@@ -54,7 +55,7 @@
                 </div>
                 <iframe class="embed-responsive-item videoId" :src="videoId" v-if="videoId" allowfullscreen></iframe>
               </div>
-              <div class="px-3 py-3">
+              <div v-if="url||urlValidation" class="px-3 py-3">
                 <div v-if="!errorCode">
                   <p class="font-weight-bold mb-1">Video title: <span class="font-weight-normal">{{ videoTitle }}</span></p>
                   <p class="font-weight-bold mb-0">From channel: <a :href="channelUrl" class="font-weight-normal">{{ videoChannel }}</a></p>
@@ -79,8 +80,8 @@
             </div>
             <div class="form-group">
               <input type="text" v-model="keyWord" class="form-control" placeholder="Type your keywords here" :disabled="!url||urlValidation">
-              <small class="form-text text-danger" v-if="!url||urlValidation">Please fill Youtube link first!</small>
-              <small class="form-text text-secondary" v-else>Example: web</small>
+              <small class="form-text text-secondary" v-if="url||urlValidation">
+                <span class="font-weight-bold">Example:</span> web</small>
             </div>
             <p class="mb-0 font-weight-bold">Note:</p>
             <ul class="pl-4">
@@ -124,7 +125,14 @@
       </div>
     </section>
     <section class="section-3">
-
+      <div class="container" id="learnMore">
+        <div class="row">
+          <div class="col-md-4 mb-5 mb-md-0">
+            <h1 class="text--paua kalam display-4 text-center">Subtify</h1>
+          </div>
+          <div class="col-md-8 quicksand font-weight-bold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores facere fugiat harum magni nam quibusdam quisquam ratione sunt velit voluptate. Facilis laboriosam, nam nulla obcaecati odit praesentium quas sapiente sequi.</div>
+        </div>
+      </div>
     </section>
   </div>
 
@@ -161,14 +169,14 @@
                   if (url && url.length >= 3) {
                       await this.validation(url, this.url)
                   } else {
-                      this.bersihkanHasilDanpagination()
+                      this.clearResultAndPagination()
                   }
               }, 250),
               keyWord: pDebounce(async function handleKeywords(keyWord) {
                   if (keyWord && keyWord.length >= 3) {
                       await this.cari(keyWord, this.url)
                   } else {
-                      this.bersihkanHasilDanpagination()
+                      this.clearResultAndPagination()
                   }
               }, 250)
           },
@@ -240,11 +248,7 @@
                   }
                   await this.cari(this.keyWord, this.url, this.pagination[type])
               },
-              bersihkan() {
-                  this.keyWord = ''
-                  this.bersihkanHasilDanpagination()
-              },
-              bersihkanHasilDanpagination() {
+              clearResultAndPagination() {
                   this.responseList = []
                   this.pagination = {
                       first: null,

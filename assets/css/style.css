@@ -3,6 +3,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 /* */
 /* Font Clasess */
+.kalam {
+  font-family: "Kalam", cursive;
+}
+
 .quicksand {
   font-family: "Quicksand", sans-serif;
 }
@@ -62,28 +66,28 @@ body {
 
 .navbar-brand {
   font-family: "Kalam", cursive;
-  color: #000000;
+  color: #2D0367;
   font-size: 2.2rem;
   padding: 0;
 }
 .navbar-brand:hover {
-  color: #2D0367;
+  color: #000000;
 }
 
 .navbar-nav {
   font-family: "Quicksand", sans-serif;
   font-weight: 600;
-  color: #000000;
+  color: #2D0367;
   letter-spacing: 0.7px;
 }
 .navbar-nav:hover {
   text-decoration: none;
-  color: #2D0367;
-  border-bottom: 2px solid #2D0367;
+  color: #000000;
+  border-bottom: 2px solid #000000;
 }
 .navbar-nav.is-active {
   color: #000000;
-  border-bottom: 2px solid #2D0367;
+  border-bottom: 2px solid #000000;
 }
 
 .jumbotron-hero {
@@ -91,30 +95,29 @@ body {
   background-color: #ffffff;
   height: 100vh;
 }
-.jumbotron-hero .hero-content {
-  padding: 75px 0;
-}
-.jumbotron-hero .hero-title {
+
+.hero-title {
   color: #000000;
   font-family: "Quicksand", sans-serif;
   font-size: 4em;
 }
 @media (max-width: 960px) {
-  .jumbotron-hero .hero-title {
+  .hero-title {
     font-size: 3.5em;
   }
 }
 @media (max-width: 768px) {
-  .jumbotron-hero .hero-title {
+  .hero-title {
     font-size: 3em;
   }
 }
 @media (max-width: 576px) {
-  .jumbotron-hero .hero-title {
+  .hero-title {
     font-size: 2.5em;
   }
 }
-.jumbotron-hero .hero-subtitle {
+
+.hero-subtitle {
   color: #000000;
   font-family: "Roboto", sans-serif;
   font-size: 1.2em;
@@ -163,12 +166,13 @@ body {
 .section-2 {
   background-color: #F0E6FF;
   transform: skewY(-3deg);
-  margin: -15px 0;
+  margin: 0;
   padding: 50px 0;
 }
 .section-2 .container {
   transform: skewY(3deg);
-  padding-top: 10vh;
+  padding-top: 12vh;
+  padding-bottom: 10vh;
 }
 
 .form-control {
@@ -227,6 +231,14 @@ body {
 
 .caption-result mark {
   background-color: #C49CFC;
+}
+
+.section-3 {
+  padding: 50px 0;
+}
+.section-3 .container {
+  padding-top: 15vh;
+  padding-bottom: 10vh;
 }
 
 /*# sourceMappingURL=style.css.map */
