@@ -1,5 +1,5 @@
 {
-  "name": "vue-search-video-caption",
+  "name": "Subtify",
   "version": "0.9.0",
   "description": "Search caption from Youtube video with VueJS and Bootstrap",
   "main": "index.html",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arifinizzah/vue-search-video-caption.git"
+    "url": "git+https://github.com/arifinizzah/subtify.git"
   },
   "keywords": [
     "youtube",
@@ -25,7 +25,7 @@
   "author": "Arifin Izzah",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arifinizzah/vue-search-video-caption/issues"
+    "url": "https://github.com/arifinizzah/subtify/issues"
   },
-  "homepage": "https://github.com/arifinizzah/vue-search-video-caption#readme"
+  "homepage": "https://github.com/arifinizzah/subtify#README"
 }
