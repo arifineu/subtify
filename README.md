@@ -4,7 +4,9 @@ Subtify is open-source platform that helps you to find subtitles or captions on 
 <br>
 <br>
 
-<img src="/assets/img/github-readme.png" width="80%" align="center">
+<p align=center>
+  <img src="/assets/img/github-readme.png" width="80%" align=center>
+</p>
 
 <br>
 
