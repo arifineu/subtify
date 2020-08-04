@@ -226,10 +226,14 @@ body {
 
 .form-control {
   border-color: #D2B4FF;
+  border-radius: 10px;
 }
 .form-control:focus {
   border-color: #D2B4FF;
   box-shadow: 0 0 0 0.2rem #e8d8ff;
+}
+.form-control:disabled {
+  background-color: #F0E6FF;
 }
 
 .video-section {
@@ -279,7 +283,7 @@ body {
 }
 
 .caption-result mark {
-  background-color: #C49CFC;
+  background-color: #DAC1FF;
 }
 
 .section-3 {

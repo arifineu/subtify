@@ -134,9 +134,13 @@ body{
 
 .form-control{
   border-color: $mauve;
+  border-radius: 10px;
   &:focus{
     border-color: $mauve;
     box-shadow: 0 0 0 0.2rem $blue-chalk-dark;
+  }
+  &:disabled{
+    background-color: $blue-chalk;
   }
 }
 
@@ -189,7 +193,7 @@ body{
 
 .caption-result{
   mark{
-    background-color: $mauve-dark;
+    background-color: $fog;
   }
 }
 

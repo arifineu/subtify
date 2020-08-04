@@ -45,7 +45,7 @@
     </section>
     <section class="section-2">
       <div class="container" id="findWords">
-        <h3 class="mb-5 mb-md-3">Find Words</h3>
+        <h2 class="mb-4 quicksand font-weight-600">Find Words</h2>
         <div class="row mb-5">
           <div class="col-md-6 order-md-1 mb-5 mb-md-0">
             <div class="video-section sticky-top ml-0 ml-md-1">
@@ -71,14 +71,14 @@
             </div>
           </div>
           <div class="col-md-6 order-md-0 pr-md-5">
-            <div class="form-group">
+            <div class="form-group mb-4 pr-0 pr-md-4">
               <input type="text" v-model="url" class="form-control" v-bind:class="{false: urlValidation, 'is-invalid': urlValidation}" placeholder="Paste Youtube video link here">
               <small class="form-text text-danger" v-if="urlValidation&&url">URL not valid, please insert a valid Youtube video URL</small>
               <small class="form-text text-secondary" v-if="!urlValidation||!url">
                 <span class="font-weight-bold">Example: </span>https://www.youtube.com/watch?v=klnvttPfOUM
               </small>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-4 pr-0 pr-md-4">
               <input type="text" v-model="keyWord" class="form-control" placeholder="Type your keywords here" :disabled="!url||urlValidation">
               <small class="form-text text-secondary" v-if="url||urlValidation">
                 <span class="font-weight-bold">Example:</span> web</small>
@@ -89,11 +89,11 @@
               <li>Keywords must contains at least 3 characters</li>
             </ul>
             <div class="d-none" v-bind:class="{ true: wordsFound, 'd-block':wordsFound }">
-              <h5 class="mt-5 mb-3">Result</h5>
+              <h4 class="mt-5 mb-3">Result</h4>
               <p class="mb-3">
                 <span class="font-weight-bold">{{ wordsFound }}</span> words found!
               </p>
-              <div class="d-flex justify-content-between mb-4">
+              <div class="d-flex justify-content-between mb-4 pr-0 pr-md-4">
                 <p class="my-auto">Page: <span class="font-weight-bold">{{ pagination.page }}</span></p>
                 <div class="control-buttons">
                   <button class="btn btn-icon" @click="navigation('first')" :disabled="!pagination['first']">
