@@ -70,9 +70,9 @@ For now it's still not available yet, but you can clone this repository.
 ## Donation
 You can support Subtify to keep this project alive!
 
-Support from:
-- Ko-fi: <a href="https://ko-fi.com/arifinizzah">https://ko-fi.com/arifinizzah</a>
-- Saweria: <a href="https://saweria.co/arifinizzah">https://saweria.co/arifinizzah</a>
+Support with:
+- <b>Ko-fi</b>: <a href="https://ko-fi.com/arifinizzah">https://ko-fi.com/arifinizzah</a>
+- <b>Saweria</b>: <a href="https://saweria.co/arifinizzah">https://saweria.co/arifinizzah</a>
 
 ## Author
 <b>Arifin Izzah Maulana</b>
