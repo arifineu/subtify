@@ -2,10 +2,9 @@
 <p align=center>Subtify is open-source platform that helps you to find subtitles or captions on YouTube videos quickly, and it's 100% free!</p>
 
 <br>
-<br>
 
 <p align=center>
-  <img src="/assets/img/readme-image.jpg" width="80%" align=center>
+  <img src="/assets/img/readme-image-min.jpg" align=center>
 </p>
 
 <br>
