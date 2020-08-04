@@ -9,7 +9,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "sass --watch src/scss/main.scss assets/css/style.css"
+    "watch": "sass --watch src/scss/main.scss assets/css/style.css",
+    "sass-minify": "sass src/scss/main.scss assets/css/style.min.css --style compressed"
   },
   "repository": {
     "type": "git",
