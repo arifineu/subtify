@@ -28,7 +28,6 @@ Subtify is open-source platform that helps you to find words in subtitles or cap
 </p>
 
 <br>
-<br>
 
 ## Why use Subtify?
 - Minimalist User Interface
