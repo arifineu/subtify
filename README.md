@@ -5,7 +5,7 @@
 <br>
 
 <p align=center>
-  <img src="/assets/img/github-readme.png" width="80%" align=center>
+  <img src="/assets/img/readme-image.jpg" width="80%" align=center>
 </p>
 
 <br>
