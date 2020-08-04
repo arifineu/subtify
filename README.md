@@ -70,8 +70,12 @@ For now it's still not available yet, but you can clone this repository.
 ## Donation
 You can support Subtify to keep this project alive!
 
+Support from:
+- Ko-fi: <a href="https://ko-fi.com/arifinizzah">https://ko-fi.com/arifinizzah</a>
+- Saweria: <a href="https://saweria.co/arifinizzah">https://saweria.co/arifinizzah</a>
+
 ## Author
-Arifin Izzah Maulana
+<b>Arifin Izzah Maulana</b>
 - Facebook: <a href="https://www.facebook.com/arifinizz">@arifinizz</a>
 - Instagram: <a href="https://www.instagram.com/arifin_izz/">@arifin_izz</a>
 - Dribble: <a href="https://dribbble.com/arifinizzah">@arifinizzah</a>
