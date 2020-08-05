@@ -42,7 +42,7 @@ Subtify is open-source platform that helps you to find words in subtitles or cap
 Just simply paste the link in input box, then search the words and boom! you got what you want.
 
 ## Demo
-For now it's still not available yet, but you can clone this repository.
+Website: https://subtify.netlify.app/
 
 ## Contribute to Subtify
   #### Tech Used
