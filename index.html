@@ -259,7 +259,7 @@
                       this.urlValidation = false
                       var match = url.match(regExp)
                       if (match && match[5].length == 11) {
-                          this.videoId = 'http://www.youtube.com/embed/'+match[5]
+                          this.videoId = 'https://www.youtube.com/embed/'+match[5]
                           this.videoApi(match[5])
                       } else {
                           this.urlValidation = true
