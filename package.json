@@ -24,7 +24,7 @@
     "bootstrap"
   ],
   "author": "Arifin Izzah",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/arifinizzah/subtify/issues"
   },
