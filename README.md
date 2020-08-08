@@ -83,4 +83,4 @@ Support with:
   
 ## License
 - Copyright © 2020 Subtify
-- <b>Subtify is open-sourced software licensed under the MIT license.</b>
+- <b>Subtify is open-sourced software licensed under the GPL 3.0 license.</b>
