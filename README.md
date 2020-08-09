@@ -84,3 +84,12 @@ Support with:
 ## License
 - Copyright © 2020 Subtify
 - <b>Subtify is open-sourced software licensed under the GPL 3.0 license.</b>
+
+## Thanks To
+- Allah SWT
+- <a href="https://github.com/jefrydco">Jefrydco</a>
+- Himit PENS
+- And my spirit :)
+
+## Contributor
+there are no contributors yet.
