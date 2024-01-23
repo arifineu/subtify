@@ -13,7 +13,6 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.min.css">
-  <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
   <div id="app">
@@ -95,15 +94,15 @@
               <li>Youtube video must contains captions or subtitle</li>
               <li>Keywords must contains at least 3 characters</li>
             </ul>
-            <div v-if="wordsFound">
-              <div class="d-block">
+            <div v-show="keyWord && !isLoading">
+              <div class="d-block true">
                 <h4 class="mt-5 mb-3">Result</h4>
                 <p class="mb-3">
                   <span class="font-weight-bold">{{ wordsFound }}</span> words found!
                 </p>
                 <div class="d-flex justify-content-between mb-4 pr-0 pr-md-4">
                   <p class="my-auto">Page: <span class="font-weight-bold">{{ pagination.page }}</span></p>
-                  <div class="control-buttons">
+                  <div>
                     <button class="btn btn-icon" @click="navigation('first')" :disabled="!pagination['first']">
                       <i data-feather="chevrons-left"></i>
                     </button>
@@ -218,6 +217,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
   <script src="assets/js/pdebounce.min.js"></script>
   <script src="assets/js/vue.js"></script>
   <script>feather.replace()</script>
