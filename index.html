@@ -13,7 +13,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
   <div id="app">
@@ -95,35 +95,37 @@
               <li>Youtube video must contains captions or subtitle</li>
               <li>Keywords must contains at least 3 characters</li>
             </ul>
-            <div v-if="wordsFound && !isLoading" class="d-block">
-              <h4 class="mt-5 mb-3">Result</h4>
-              <p class="mb-3">
-                <span class="font-weight-bold">{{ wordsFound }}</span> words found!
-              </p>
-              <div class="d-flex justify-content-between mb-4 pr-0 pr-md-4">
-                <p class="my-auto">Page: <span class="font-weight-bold">{{ pagination.page }}</span></p>
-                <div class="control-buttons">
-                  <button class="btn btn-icon" @click="navigation('first')" :disabled="!pagination['first']">
-                    <i data-feather="chevrons-left"></i>
-                  </button>
-                  <button class="btn btn-icon" @click="navigation('prev')" :disabled="!pagination['prev']">
-                    <i data-feather="chevron-left"></i>
-                  </button>
-                  <button class="btn btn-icon" @click="navigation('next')" :disabled="!pagination['next']">
-                    <i data-feather="chevron-right"></i>
-                  </button>
-                  <button class="btn btn-icon" @click="navigation('last')" :disabled="!pagination['last']">
-                    <i data-feather="chevrons-right"></i>
-                  </button>
+            <div v-if="wordsFound">
+              <div class="d-block">
+                <h4 class="mt-5 mb-3">Result</h4>
+                <p class="mb-3">
+                  <span class="font-weight-bold">{{ wordsFound }}</span> words found!
+                </p>
+                <div class="d-flex justify-content-between mb-4 pr-0 pr-md-4">
+                  <p class="my-auto">Page: <span class="font-weight-bold">{{ pagination.page }}</span></p>
+                  <div class="control-buttons">
+                    <button class="btn btn-icon" @click="navigation('first')" :disabled="!pagination['first']">
+                      <i data-feather="chevrons-left"></i>
+                    </button>
+                    <button class="btn btn-icon" @click="navigation('prev')" :disabled="!pagination['prev']">
+                      <i data-feather="chevron-left"></i>
+                    </button>
+                    <button class="btn btn-icon" @click="navigation('next')" :disabled="!pagination['next']">
+                      <i data-feather="chevron-right"></i>
+                    </button>
+                    <button class="btn btn-icon" @click="navigation('last')" :disabled="!pagination['last']">
+                      <i data-feather="chevrons-right"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
+              <ul class="pl-4">
+                <li v-for="(response, i) in responseList" :key="i" class="mb-3">
+                  <span class="caption-result" v-html="response.text"></span>
+                  [<a :href="`${url}&t=${response.start}s`" target="_blank">{{ timeStart(response.start) }}</a>]
+                </li>
+              </ul>
             </div>
-            <ul v-else class="pl-4">
-              <li v-for="(response, i) in responseList" :key="i" class="mb-3">
-                <span class="caption-result" v-html="response.text"></span>
-                [<a :href="`${url}&t=${response.start}s`" target="_blank">{{ timeStart(response.start) }}</a>]
-              </li>
-            </ul>
 
             <div v-if="isLoading" class="d-flex align-items-center">
               <h5 class="mt-5 text--mauve-dark text-center">Loading..</h5>
