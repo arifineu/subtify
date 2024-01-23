@@ -49,6 +49,7 @@
         </div>
       </div>
     </section>
+
     <section class="section-2">
       <div class="container" id="findWords">
         <h2 class="mb-4 quicksand font-weight-600">Find Words</h2>
@@ -94,7 +95,7 @@
               <li>Youtube video must contains captions or subtitle</li>
               <li>Keywords must contains at least 3 characters</li>
             </ul>
-            <div class="d-none" v-bind:class="{ true: wordsFound, 'd-block':wordsFound }">
+            <div v-if="wordsFound && !isLoading" class="d-block">
               <h4 class="mt-5 mb-3">Result</h4>
               <p class="mb-3">
                 <span class="font-weight-bold">{{ wordsFound }}</span> words found!
@@ -117,19 +118,24 @@
                 </div>
               </div>
             </div>
-            <div class="d-flex align-items-center" v-if="!wordsFound&&keyWord">
-              <h5 class="mt-5 text--mauve-dark text-center">Words not found. Make sure you enter 3 or more characters or try different keywords</h5>
-            </div>
-            <ul class="pl-4">
+            <ul v-else class="pl-4">
               <li v-for="(response, i) in responseList" :key="i" class="mb-3">
                 <span class="caption-result" v-html="response.text"></span>
                 [<a :href="`${url}&t=${response.start}s`" target="_blank">{{ timeStart(response.start) }}</a>]
               </li>
             </ul>
+
+            <div v-if="isLoading" class="d-flex align-items-center">
+              <h5 class="mt-5 text--mauve-dark text-center">Loading..</h5>
+              </div>
+            <div v-if="!wordsFound && !isLoading && keyWord" class="d-flex align-items-center">
+              <h5 class="mt-5 text--mauve-dark text-center">Words not found. Make sure you enter 3 or more characters or try different keywords</h5>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
     <section class="section-3">
       <div class="container" id="learnMore">
         <div class="row">
@@ -174,6 +180,7 @@
         </div>
       </div>
     </section>
+
     <section class="section-4 bg-light">
       <div class="container">
         <div class="row">
@@ -197,6 +204,7 @@
         </div>
       </div>
     </section>
+
     <footer class="nav justify-content-center bg-color--blue-chalk mb-0 py-4">
       <p class="quicksand font-weight-600 text-center">
         Copyright © 2020 <a href="">Subtify</a>.
@@ -206,6 +214,7 @@
       </p>
     </footer>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
   <script src="assets/js/pdebounce.min.js"></script>
   <script src="assets/js/vue.js"></script>

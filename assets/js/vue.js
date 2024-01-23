@@ -18,7 +18,8 @@ new Vue({
         videoChannel: '',
         channelUrl: '',
         errorCode: null,
-        errorMessage: null
+        errorMessage: null,
+        isLoading: false,
     },
     watch: {
         url: pDebounce(async function handleUrl(url) {
@@ -30,7 +31,9 @@ new Vue({
         }, 250),
         keyWord: pDebounce(async function handleKeywords(keyWord) {
             if (keyWord && keyWord.length >= 3) {
+                this.isLoading = true
                 await this.cari(keyWord, this.url)
+                this.isLoading = false
             } else {
                 this.clearResultAndPagination()
             }
