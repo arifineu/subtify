@@ -1,5 +1,6 @@
 import { cors } from 'hono/cors'
 import { Hono } from 'hono'
+import { metadataRoute } from './routes/metadata'
 import { transcriptRoute } from './routes/transcript'
 
 interface Bindings {
@@ -13,7 +14,7 @@ app.use(
   '*',
   cors({
     origin: (origin, c) => {
-      const allowed = ['http://localhost:5175']
+      const allowed = ['http://localhost:5173']
       const frontendUrl = c.env.FRONTEND_URL
       if (frontendUrl) allowed.push(frontendUrl)
       return allowed.includes(origin) ? origin : null
@@ -24,5 +25,6 @@ app.use(
 
 app.get('/health', (c) => c.json({ status: 'ok' }))
 app.route('/transcript', transcriptRoute)
+app.route('/metadata', metadataRoute)
 
 export default app

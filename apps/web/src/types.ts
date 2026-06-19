@@ -1,8 +1,6 @@
-export interface SubtitleLine {
-  text: string
-  start: number
-  duration: number
-}
+import type { SubtitleLine } from '@subtify/types'
+
+export type { SubtitleLine }
 
 export interface SearchResult {
   line: SubtitleLine
@@ -12,7 +10,7 @@ export interface SearchResult {
 export interface SearchEntry {
   query: string
   results: SearchResult[]
-  searchedAt: number
+  searchedAt: number // Date.now()
 }
 
 export interface VideoSession {

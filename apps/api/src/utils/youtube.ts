@@ -1,3 +1,4 @@
+import type { SubtitleLine } from '@subtify/types'
 import { YoutubeTranscript } from 'youtube-transcript'
 
 export class TranscriptError extends Error {
@@ -8,11 +9,7 @@ export class TranscriptError extends Error {
   }
 }
 
-export interface SubtitleLine {
-  text: string
-  start: number // seconds
-  duration: number
-}
+export type { SubtitleLine }
 
 const VIDEO_ID_PATTERN = /^[a-zA-Z0-9_-]{11}$/
 

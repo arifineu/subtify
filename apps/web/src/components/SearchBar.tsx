@@ -1,42 +1,74 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 
-export function SearchBar() {
-  const searchSubtitles = useAppStore((state) => state.searchSubtitles)
-  const hasTranscript = useAppStore(
-    (state) => state.currentVideoId !== null && state.currentTranscript.length > 0
-  )
-  const [query, setQuery] = useState('')
+interface SearchBarProps {
+  resultCount: number
+  query: string
+}
 
-  function handleSearch() {
-    const trimmed = query.trim()
+const DEBOUNCE_MS = 300
+
+function useDebouncedValue<T>(value: T, delayMs: number): T {
+  const [debounced, setDebounced] = useState(value)
+  useEffect(() => {
+    const timer = setTimeout(() => setDebounced(value), delayMs)
+    return () => clearTimeout(timer)
+  }, [value, delayMs])
+  return debounced
+}
+
+export function SearchBar({ resultCount, query }: SearchBarProps) {
+  const runLiveSearch = useAppStore((s) => s.runLiveSearch)
+  const commitSearch = useAppStore((s) => s.searchSubtitles)
+  const hasTranscript = useAppStore(
+    (s) => s.currentVideoId !== null && s.currentTranscript.length > 0
+  )
+  const currentVideoId = useAppStore((s) => s.currentVideoId)
+
+  const [input, setInput] = useState('')
+  const debouncedInput = useDebouncedValue(input, DEBOUNCE_MS)
+
+  // Live search-as-you-type. Runs the lightweight path that does NOT push to history.
+  useEffect(() => {
+    if (!hasTranscript) return
+    runLiveSearch(debouncedInput)
+  }, [debouncedInput, hasTranscript, runLiveSearch])
+
+  // Reset the local input field when a new video is loaded.
+  useEffect(() => {
+    setInput('')
+  }, [currentVideoId])
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key !== 'Enter') return
+    const trimmed = input.trim()
     if (!trimmed || !hasTranscript) return
-    searchSubtitles(trimmed)
+    // Enter runs the full search path that also saves the query to history.
+    commitSearch(trimmed)
   }
 
+  const hasQuery = query.length > 0
+
   return (
-    <section className="rounded-[8px] bg-[#1a1a1a] p-4">
-      <div className="flex flex-col gap-2 sm:flex-row">
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') handleSearch()
-          }}
-          disabled={!hasTranscript}
-          placeholder={hasTranscript ? 'Search subtitles…' : 'Load a transcript to start searching'}
-          className="w-full rounded-[4px] border border-[#2a2a2a] bg-[#0f0f0f] px-3 py-2 text-sm text-[#f1f1f1] placeholder:text-[#aaaaaa] focus:border-[#ff0000] focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
-        />
-        <button
-          type="button"
-          onClick={handleSearch}
-          disabled={!hasTranscript || !query.trim()}
-          className="shrink-0 rounded-[4px] bg-[#ff0000] px-4 py-2 text-sm font-medium text-white transition-opacity disabled:cursor-not-allowed disabled:opacity-60"
-        >
-          Search
-        </button>
-      </div>
-    </section>
+    <div className="space-y-2">
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        onKeyDown={handleKeyDown}
+        disabled={!hasTranscript}
+        placeholder={
+          hasTranscript ? 'Type to search subtitles…' : 'Load a transcript to start searching'
+        }
+        className="w-full rounded-[4px] border border-line bg-canvas/70 px-3 py-2 text-sm text-fg placeholder:text-muted focus:border-accent focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
+      />
+      <p className="h-4 text-xs text-muted" aria-live="polite">
+        {hasQuery
+          ? `${resultCount} result${resultCount === 1 ? '' : 's'} for “${query}”`
+          : hasTranscript
+            ? 'Type to search · Enter saves to history'
+            : ''}
+      </p>
+    </div>
   )
 }

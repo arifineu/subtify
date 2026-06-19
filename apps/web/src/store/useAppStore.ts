@@ -1,6 +1,9 @@
+import type { VideoMetadata } from '@subtify/types'
 import { create } from 'zustand'
 import type { SearchResult, SubtitleLine, VideoSession } from '../types'
 import { searchSubtitles } from '../utils/search'
+
+export type Theme = 'light' | 'dark'
 
 interface AppStore {
   sessions: VideoSession[]
@@ -9,11 +12,29 @@ interface AppStore {
   currentQuery: string
   currentResults: SearchResult[]
   isTranscriptLoading: boolean
+
+  // Live preview state — pendingVideoId is parsed from the URL field before
+  // "Load Subtitles" is clicked. VideoMetadata is fetched for whichever id is
+  // currently in view (pendingVideoId ?? currentVideoId).
+  pendingVideoId: string | null
+  videoMetadata: VideoMetadata | null
+  isMetadataLoading: boolean
+
+  // UI preferences
+  theme: Theme
+
   loadTranscript: (videoId: string, transcript: SubtitleLine[]) => void
   setTranscriptLoading: (loading: boolean) => void
+  setPendingVideoId: (id: string | null) => void
+  setVideoMetadata: (meta: VideoMetadata | null) => void
+  setMetadataLoading: (loading: boolean) => void
+  /** Live search: updates currentQuery + currentResults only (no history). Used by debounced type-ahead. */
+  runLiveSearch: (query: string) => void
+  /** Explicit search: updates results AND pushes a SearchEntry into history. Used on Enter. */
   searchSubtitles: (query: string) => void
   restoreSession: (videoId: string, query: string) => void
   clearHistory: () => void
+  toggleTheme: () => void
 }
 
 export const useAppStore = create<AppStore>((set, get) => ({
@@ -23,6 +44,11 @@ export const useAppStore = create<AppStore>((set, get) => ({
   currentQuery: '',
   currentResults: [],
   isTranscriptLoading: false,
+  pendingVideoId: null,
+  videoMetadata: null,
+  isMetadataLoading: false,
+  theme: 'light',
+
   loadTranscript: (videoId, transcript) => {
     set((state) => {
       const existingSession = state.sessions.find((session) => session.videoId === videoId)
@@ -43,6 +69,22 @@ export const useAppStore = create<AppStore>((set, get) => ({
     })
   },
   setTranscriptLoading: (loading) => set({ isTranscriptLoading: loading }),
+  setPendingVideoId: (id) =>
+    set((state) => ({
+      pendingVideoId: id,
+      // Clear stale metadata if the id actually changed.
+      videoMetadata:
+        state.videoMetadata && state.videoMetadata.videoId === id ? state.videoMetadata : null,
+    })),
+  setVideoMetadata: (meta) => set({ videoMetadata: meta }),
+  setMetadataLoading: (loading) => set({ isMetadataLoading: loading }),
+
+  runLiveSearch: (query) => {
+    const state = get()
+    const normalizedQuery = query.trim()
+    const results = searchSubtitles(state.currentTranscript, normalizedQuery)
+    set({ currentQuery: normalizedQuery, currentResults: results })
+  },
   searchSubtitles: (query) => {
     const state = get()
     const normalizedQuery = query.trim()
@@ -95,4 +137,6 @@ export const useAppStore = create<AppStore>((set, get) => ({
       currentQuery: '',
       currentResults: [],
     }),
+  toggleTheme: () =>
+    set((state) => ({ theme: state.theme === 'light' ? 'dark' : 'light' })),
 }))

@@ -2,8 +2,18 @@
   "name": "subtify",
   "private": true,
   "version": "0.0.0",
+  "packageManager": "pnpm@11.5.1",
   "scripts": {
-    "dev:web": "pnpm --dir apps/web dev",
-    "dev:api": "pnpm --dir apps/api dev"
+    "dev": "turbo dev",
+    "dev:web": "turbo dev --filter=web",
+    "dev:api": "turbo dev --filter=api",
+    "build": "turbo build",
+    "type-check": "turbo type-check",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "deploy": "turbo deploy --filter=api"
+  },
+  "devDependencies": {
+    "turbo": "^2.9.18"
   }
 }

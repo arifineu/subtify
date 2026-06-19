@@ -1,12 +1,59 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode (Tailwind v4 defaults to prefers-color-scheme). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Semantic color tokens. @theme inline makes Tailwind emit utilities that
+ * reference the underlying CSS variable (e.g. .bg-canvas { background-color: var(--canvas) }),
+ * so flipping the .dark class on <html> swaps every token at once.
+ */
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-inset: var(--inset);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --font-sans: Inter, system-ui, sans-serif;
+}
+
+/* Light mode (default) — soft off-white, refined red accent. */
+:root {
+  --canvas: #f8f8f8;
+  --surface: #ffffff;
+  --inset: #f1f1f4;
+  --fg: #18181b;
+  --muted: #71717a;
+  --line: #e4e4e7;
+  --accent: #dc2626;
+  --accent-hover: #b91c1c;
+  color-scheme: light;
+}
+
+/* Dark mode — original palette with a slightly softer red. */
+.dark {
+  --canvas: #0f0f0f;
+  --surface: #1a1a1a;
+  --inset: #0f0f0f;
+  --fg: #f1f1f1;
+  --muted: #aaaaaa;
+  --line: #2a2a2a;
+  --accent: #ef4444;
+  --accent-hover: #dc2626;
+  color-scheme: dark;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background-color: #0f0f0f;
-  color: #f1f1f1;
-  font-family: Inter, system-ui, sans-serif;
+  background-color: var(--canvas);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  transition: background-color 200ms ease, color 200ms ease;
 }

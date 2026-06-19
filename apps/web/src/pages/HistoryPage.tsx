@@ -31,26 +31,24 @@ export function HistoryPage() {
 
   if (sessions.length === 0) {
     return (
-      <section className="rounded-[8px] border border-dashed border-[#2a2a2a] p-4 text-sm text-[#aaaaaa]">
+      <section className="rounded-[8px] border border-dashed border-line p-4 text-sm text-muted">
         {justCleared ? 'Session history cleared.' : 'No searches yet in this session.'}
       </section>
     )
   }
 
   return (
-    <div className="space-y-4">
+    <div className="h-full space-y-4 overflow-y-auto pr-1">
       <div className="flex items-center gap-3">
         <button
           type="button"
           onClick={handleClear}
           onBlur={() => setConfirming(false)}
-          className="rounded-[4px] bg-[#ff0000] px-4 py-2 text-sm font-medium text-white transition-opacity"
+          className="rounded-[4px] bg-accent px-4 py-2 text-sm font-medium text-white transition-opacity hover:bg-accent-hover"
         >
           {confirming ? 'Click again to confirm' : 'Clear Session'}
         </button>
-        {justCleared ? (
-          <span className="text-sm text-[#aaaaaa]">Cleared.</span>
-        ) : null}
+        {justCleared ? <span className="text-sm text-muted">Cleared.</span> : null}
       </div>
       {sessions.map((session) => (
         <HistoryCard

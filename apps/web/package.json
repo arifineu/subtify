@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "type-check": "tsc -b --noEmit",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@subtify/types": "workspace:*",
     "@tailwindcss/vite": "^4.3.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

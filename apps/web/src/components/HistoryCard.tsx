@@ -16,31 +16,31 @@ function formatSearchedAt(ms: number): string {
 
 export function HistoryCard({ session, onRestore }: HistoryCardProps) {
   return (
-    <section className="rounded-[8px] bg-[#1a1a1a] p-4">
+    <section className="rounded-[8px] bg-surface p-4">
       <div className="mb-3 flex items-center gap-3">
         <img
-          src={`https://img.youtube.com/vi/${session.videoId}/hqdefault.jpg`}
+          src={`https://i.ytimg.com/vi/${session.videoId}/hqdefault.jpg`}
           alt={`Thumbnail for ${session.videoId}`}
           className="h-14 w-24 rounded-[4px] object-cover"
         />
         <div>
-          <p className="text-xs uppercase tracking-wide text-[#aaaaaa]">Video ID</p>
-          <p className="font-mono text-sm text-[#f1f1f1]">{session.videoId}</p>
+          <p className="text-xs uppercase tracking-wide text-muted">Video ID</p>
+          <p className="font-mono text-sm text-fg">{session.videoId}</p>
         </div>
       </div>
       <div className="space-y-2">
         {session.searches.length === 0 ? (
-          <p className="text-sm text-[#aaaaaa]">No searches yet.</p>
+          <p className="text-sm text-muted">No searches yet.</p>
         ) : (
           session.searches.map((search) => (
             <button
               key={`${search.query}-${search.searchedAt}`}
               type="button"
               onClick={() => onRestore?.(session.videoId, search.query)}
-              className="flex w-full items-center justify-between gap-3 rounded-[4px] border border-[#2a2a2a] px-3 py-2 text-left text-sm text-[#f1f1f1] transition-colors hover:border-[#ff0000]"
+              className="flex w-full items-center justify-between gap-3 rounded-[4px] border border-line px-3 py-2 text-left text-sm text-fg transition-colors hover:border-accent"
             >
               <span className="truncate">“{search.query}”</span>
-              <span className="shrink-0 text-xs text-[#aaaaaa]">
+              <span className="shrink-0 text-xs text-muted">
                 {formatSearchedAt(search.searchedAt)} · {search.results.length} results
               </span>
             </button>

@@ -28,3 +28,6 @@ dist-ssr
 .env*.local
 .dev.vars
 .dev.vars.*
+
+# Turborepo
+.turbo

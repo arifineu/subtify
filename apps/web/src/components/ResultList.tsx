@@ -15,7 +15,7 @@ export function ResultList({ results, videoId, query }: ResultListProps) {
 
   if (results.length === 0) {
     return (
-      <section className="rounded-[8px] border border-dashed border-[#2a2a2a] p-4 text-sm text-[#aaaaaa]">
+      <section className="rounded-[8px] border border-dashed border-line p-4 text-sm text-muted">
         {query ? 'No results found.' : 'Search something to see results.'}
       </section>
     )
@@ -38,7 +38,7 @@ export function ResultList({ results, videoId, query }: ResultListProps) {
         <button
           type="button"
           onClick={() => setShowAll((v) => !v)}
-          className="w-full rounded-[8px] border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-[#aaaaaa] transition-colors hover:text-[#f1f1f1]"
+          className="w-full rounded-[8px] border border-line bg-surface px-3 py-2 text-sm text-muted transition-colors hover:text-fg"
         >
           {showAll ? 'Show fewer' : `Show all ${results.length} results`}
         </button>
